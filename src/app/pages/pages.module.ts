@@ -12,6 +12,10 @@ import { LayoutComponent } from './layout/layout.component';
   imports: [
     CommonModule,
     PagesRoutingModule
-  ]
+  ],
+
+  exports: [
+    LayoutComponent
+  ],
 })
 export class PagesModule { }
