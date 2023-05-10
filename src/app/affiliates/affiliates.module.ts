@@ -18,6 +18,14 @@ import { AffiliateListComponent } from './affiliate-list/affiliate-list.componen
   imports: [
     CommonModule,
     AffiliatesRoutingModule
-  ]
+  ],
+
+  exports: [
+    DeleteAffiliateComponent,
+    CreateAffiliateComponent,
+    AffiliateListComponent,
+    EditAffiliateComponent,
+  ],
+
 })
 export class AffiliatesModule { }
