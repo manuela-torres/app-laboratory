@@ -10,7 +10,7 @@ const routes: Routes = [
     {path:'', component:LayoutComponent},
     //{path:'affiliates-list', component: AffiliateListComponent},
     {path:'create-affiliate', component: CreateAffiliateComponent},
-    {path:'delete-affiliate', component: DeleteAffiliateComponent},
+    {path:'delete-affiliate/:id', component: DeleteAffiliateComponent},
     {path:'editaffiliate/:id', component: EditAffiliateComponent},
 
 ];

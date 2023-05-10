@@ -11,7 +11,7 @@ const routes: Routes = [
 
     //{path:'test-list', component: TestListComponent},
     {path:'create-test', component: CreateTestComponent},
-    {path:'delete-test', component: DeleteTestComponent},
+    {path:'delete-test/:id', component: DeleteTestComponent},
     {path:'edittest/:id', component: EditTestComponent},
 ];
 

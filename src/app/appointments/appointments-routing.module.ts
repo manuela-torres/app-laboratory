@@ -12,7 +12,7 @@ const routes: Routes = [
 
     //{path:'appointments-list', component: AppointmentsListComponent},
     {path:'create-appointment', component: CreateAppointmentComponent},
-    {path:'delete-appointment', component: DelateAppointmentComponent},
+    {path:'delete-appointment/:id', component: DelateAppointmentComponent},
     {path:'editappointment/:id', component: EditAppointmentComponent},
 ];
 
