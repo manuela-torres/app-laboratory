@@ -11,6 +11,7 @@ const routes: Routes = [
   {path:'layout-page', component: LayoutComponent},
   {path:'affiliates', component: AffiliateListComponent},
   {path:'tests', component: TestListComponent},
+  {path:'appointments', component: AppointmentsListComponent},
 
 
 

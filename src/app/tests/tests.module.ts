@@ -6,6 +6,7 @@ import { TestListComponent } from './test-list/test-list.component';
 import { CreateTestComponent } from './create-test/create-test.component';
 import { DeleteTestComponent } from './delete-test/delete-test.component';
 import { EditTestComponent } from './edit-test/edit-test.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EditTestComponent } from './edit-test/edit-test.component';
   ],
   imports: [
     CommonModule,
-    TestsRoutingModule
+    TestsRoutingModule,
+    MaterialModule
   ]
 })
 export class TestsModule { }

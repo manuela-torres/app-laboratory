@@ -6,6 +6,7 @@ import { AppointmentsListComponent } from './appointments-list/appointments-list
 import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
 import { DelateAppointmentComponent } from './delate-appointment/delate-appointment.component';
 import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EditAppointmentComponent } from './edit-appointment/edit-appointment.co
   ],
   imports: [
     CommonModule,
-    AppointmentsRoutingModule
+    AppointmentsRoutingModule,
+    MaterialModule
   ]
 })
 export class AppointmentsModule { }

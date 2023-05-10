@@ -6,6 +6,7 @@ import { DeleteAffiliateComponent } from './delete-affiliate/delete-affiliate.co
 import { EditAffiliateComponent } from './edit-affiliate/edit-affiliate.component';
 import { CreateAffiliateComponent } from './create-affiliate/create-affiliate.component';
 import { AffiliateListComponent } from './affiliate-list/affiliate-list.component';
+import { MaterialModule } from '../material/material.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { AffiliateListComponent } from './affiliate-list/affiliate-list.componen
   ],
   imports: [
     CommonModule,
-    AffiliatesRoutingModule
+    AffiliatesRoutingModule,
+    MaterialModule
   ],
 
   exports: [
