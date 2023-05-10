@@ -22,7 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./affiliate-list.component.css']
 })
 export class AffiliateListComponent {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol','opcion'];
+  displayedColumns: string[] = ['id', 'name', 'age', 'email','option'];
   dataSource = ELEMENT_DATA;
 
   constructor(){}

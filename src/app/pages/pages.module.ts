@@ -10,6 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MaterialModule } from '../material/material.module';
+import {MatTableModule} from '@angular/material/table';
 
 
 
@@ -27,7 +28,8 @@ import { MaterialModule } from '../material/material.module';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MaterialModule
+    MaterialModule,
+    MatTableModule
   ],
 
   exports: [
