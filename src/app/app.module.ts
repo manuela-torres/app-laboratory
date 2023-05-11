@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { MatTableModule} from '@angular/material/table';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+
 
 
 
@@ -21,6 +24,8 @@ import { MatTableModule} from '@angular/material/table';
     BrowserAnimationsModule,
     MaterialModule,
     MatTableModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

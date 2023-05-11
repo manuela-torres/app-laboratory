@@ -11,12 +11,12 @@ const routes: Routes = [
   {path:'', redirectTo: 'home', pathMatch:'full'},
   {path:'home', component: HomeComponent},
   {path:'affiliates', component: AffiliateListComponent},
-  {path:'tests', component: TestListComponent},
+  {path:'test', component: TestListComponent},
   {path:'appointments', component: AppointmentsListComponent},
 
 
 
-  {path:'tests', loadChildren: () => import ( './tests/tests.module').then(m => m.TestsModule)},
+  {path:'test', loadChildren: () => import ( './tests/tests.module').then(m => m.TestsModule)},
   {path:'affiliates', loadChildren: () => import ( './affiliates/affiliates.module').then(m => m.AffiliatesModule)},
   {path:'appointments', loadChildren: () => import ( './appointments/appointments.module').then(m => m.AppointmentsModule)},
 

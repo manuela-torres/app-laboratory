@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Test } from 'src/app/models/test';
+import { TestsService } from 'src/app/services/tests.service';
 
 export interface PeriodicElement {
   name: string;
@@ -25,8 +27,26 @@ export class TestListComponent {
   displayedColumns: string[] = ['id', 'name', 'description','option'];
   dataSource = ELEMENT_DATA;
 
-  constructor(){}
+  public tests: Test[];
 
-  ngOnInit():void{}
+  constructor(private testsService: TestsService){}
+
+  ngOnInit():void{
+    this.getListTest1();
+  }
+
+  getListTest1(){
+    console.log("Consultando test...")
+    this.testsService.getListTest().subscribe(response =>{
+      console.log(response);
+      this.tests= response;
+
+      //En el response obtengo todo lo que viene del postman, el areglo en json
+
+
+      this.tests= this.tests.map((test, i) =>({counter: i+1, ...test}));
+
+    })
+  }
 
 }
