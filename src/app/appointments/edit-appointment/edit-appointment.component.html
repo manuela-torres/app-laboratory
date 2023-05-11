@@ -3,4 +3,55 @@
   <h2 style="margin-bottom: 0%;">Citas- Actualizar cita</h2>
   <hr color="blue" style="margin: 0%;">
 
+  <div style="margin-top: 1rem;">
+
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione una fecha</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
+
+    <!--Revisar como hacer este input de hora-->
+    <form class="example-form" style="display:inline">
+      <mat-form-field class="example-full-width">
+        <mat-label>Hora</mat-label>
+        <input matInput placeholder="">
+      </mat-form-field>
+    </form>
+
+    <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
+
+
+    <form class="example-form" style="display:inline">
+      <mat-form-field class="example-full-width">
+        <mat-label>ID prueba</mat-label>
+        <input matInput placeholder="" value="">
+      </mat-form-field>
+    </form>
+
+    <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
+
+
+    <form class="example-form" style="display:inline">
+      <mat-form-field class="example-full-width">
+        <mat-label>ID afiliado</mat-label>
+        <input matInput placeholder="" value="">
+      </mat-form-field>
+    </form>
+
+    <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
+
+
+</div>
+
+
+<span>
+  <button mat-raised-button color="primary" style="margin-left: 55rem;" >Guardar</button>
+  <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
+</span>
+
 </div>

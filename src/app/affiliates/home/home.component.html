@@ -7,16 +7,13 @@
 
     <div>
 
-    <mat-form-field appearance="fill" >
-      <mat-label>Seleccione fecha</mat-label>
-      <mat-date-range-input [rangePicker]="picker">
-        <input matStartDate placeholder="Start date">
-        <input matEndDate placeholder="End date">
-      </mat-date-range-input>
-      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Seleccione una fecha</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
     <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
 
@@ -32,9 +29,11 @@
       <form class="example-form" style="display:inline">
         <mat-form-field class="example-full-width">
           <mat-label>ID afiliado</mat-label>
-          <input matInput placeholder="Ex. Pizza" value="">
+          <input matInput placeholder="" value="">
         </mat-form-field>
       </form>
+
+      <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
 
         <span>
         <a mat-mini-fab color="primary">
