@@ -9,7 +9,10 @@
       <mat-icon>add_box</mat-icon> Nueva prueba </a>
   </div>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+
+
+  <table mat-table [dataSource]="tests" class="mat-elevation-z8">
 
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
@@ -17,7 +20,7 @@
     <!-- Position Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.idTest}} </td>
     </ng-container>
 
     <!-- Name Column -->
@@ -29,7 +32,7 @@
     <!-- Weight Column -->
     <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef> Descripción </th>
-      <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
     </ng-container>
 
 
@@ -48,6 +51,10 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+
+
+
+
 
 
 </div>

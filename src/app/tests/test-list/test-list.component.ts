@@ -25,15 +25,19 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class TestListComponent {
   displayedColumns: string[] = ['id', 'name', 'description','option'];
-  dataSource = ELEMENT_DATA;
+
+
 
   public tests: Test[];
+
 
   constructor(private testsService: TestsService){}
 
   ngOnInit():void{
     this.getListTest1();
   }
+
+
 
   getListTest1(){
     console.log("Consultando test...")
