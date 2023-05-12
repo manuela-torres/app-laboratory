@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Appointment } from 'src/app/models/appointment';
+import { AffiliatesService } from 'src/app/services/affiliates.service';
+import { AppointmentsService } from 'src/app/services/appointments.service';
 
 export interface PeriodicElement {
   name: string;
@@ -22,11 +25,26 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./appointments-list.component.css']
 })
 export class AppointmentsListComponent {
-  displayedColumns: string[] = ['id', 'date', 'time', 'idTest','idAffiliate','option'];
+  displayedColumns: string[] = ['id', 'date', 'hora', 'idTest','idAffiliate','option'];
   dataSource = ELEMENT_DATA;
 
-  constructor(){}
+  public appointments: Appointment[];
 
-  ngOnInit():void{}
+  constructor(private appointmentsService:AppointmentsService){}
+
+  ngOnInit():void{
+    this.getListAppointments1();
+
+  }
+
+  getListAppointments1(){
+    this.appointmentsService.getListAppointments().subscribe(response =>
+      {this.appointments=response
+      console.log(response);
+
+
+      }
+    )
+  }
 
 }
