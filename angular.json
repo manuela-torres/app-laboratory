@@ -64,7 +64,8 @@
               "browserTarget": "app-laboratory:build:production"
             },
             "development": {
-              "browserTarget": "app-laboratory:build:development"
+              "browserTarget": "app-laboratory:build:development",
+              "proxyConfig": "proxy.config.json"
             }
           },
           "defaultConfiguration": "development"

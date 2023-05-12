@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of } from 'rxjs';
 import { Test } from '../models/test';
 
 @Injectable({
@@ -16,6 +16,14 @@ export class TestsService {
 
   getListTest(): Observable<Test[]>{
     return this.httpClient.get<Test[]>(`${this.baseUrl}/test`);//(this.baseUrl)+"test";
+
+  }
+
+  getTestById(id:number): Observable<Test|undefined>{
+    return this.httpClient.get<Test>(`${this.baseUrl}/test/${id}`)
+    .pipe(
+      catchError (error => of (undefined)) //fernando 195
+    )
 
   }
 }

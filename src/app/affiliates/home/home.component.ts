@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { Appointment } from 'src/app/models/appointment';
+import { AppointmentsService } from 'src/app/services/appointments.service';
+import { Affiliate } from 'src/app/models/affiliate';
+import { AffiliatesService } from 'src/app/services/affiliates.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import {switchMap} from 'rxjs';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
+
 
 export interface User {
   id: number;
@@ -99,20 +100,71 @@ const ELEMENT_DATA: User[] = [
 
 
 
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   title = 'angular-mat-table-example';
 
   dataSource = ELEMENT_DATA;
-  columnsToDisplay = ['id', 'name', 'username', 'email', 'address'];
+  columnsToDisplay = ['idAffiliate', 'name', 'age', 'mail',];
+ // columnas=['Id afiliado', 'Nombre', 'Edad', 'Email']
+
+  public appointmentsHome?: Appointment;
+  public affiliatesHome: Affiliate[];
+  public appointments: any[];
+
+  constructor(private affiliatesService1: AffiliatesService,
+    private appointmentsService1: AppointmentsService,
+    private activatedRoute: ActivatedRoute,
+    private router:Router,
+    )
+
+  { }
+
+  ngOnInit():void{
+
+    this.getListAffiliates();
+    this.getAppointmentsByAffiliateId(1);
+
+  //   this.activatedRoute.params.
+  //   pipe(
+  //     switchMap( ({idAffiliate})=> this.appointmentsService1.getAppointmentByIdAffiliate( idAffiliate)),
+
+  //   ).subscribe(appointment =>{
+  //     if(!appointment) return this.router.navigate(['/home']);
+  //     this.appointmentsHome=appointment;
+  //     console.log({appointment})
+  //     return;
+  // })
+
+  }
 
 
-  toggleRow(element: { expanded: boolean; }) {
-    // Uncommnet to open only single row at once
-    // ELEMENT_DATA.forEach(row => {
-    //   row.expanded = false;
-    // })
+  getListAffiliates(){
+    this.affiliatesService1.getListAffiliates().subscribe(response =>
+      {this.affiliatesHome=response
+      console.log(response);
+      }
+    )
+  }
+
+  getAppointmentsByAffiliateId(id: number){
+    this.appointmentsService1.getAppointmentByIdAffiliate(id).subscribe(response=>
+      {this.appointments=response;
+        console.log(response);
+      }
+      )
+
+  }
+
+
+  toggleRow(element: { expanded: boolean; }, idAffiliate1:number) {
+    //Uncommnet to open only single row at once
+  //   ELEMENT_DATA.forEach(row => {
+  //     row.expanded = false;
+  //   })
     element.expanded = !element.expanded
+    this.getAppointmentsByAffiliateId(idAffiliate1)
+
   }
 
   manageAllRows(flag: boolean) {
