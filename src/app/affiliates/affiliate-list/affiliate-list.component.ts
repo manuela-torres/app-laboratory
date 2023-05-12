@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Affiliate } from 'src/app/models/affiliate';
+import { AffiliatesService } from 'src/app/services/affiliates.service';
 
 export interface PeriodicElement {
   name: string;
@@ -23,11 +25,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./affiliate-list.component.css']
 })
 export class AffiliateListComponent {
-  displayedColumns: string[] = ['id', 'name', 'age', 'email','option'];
+  displayedColumns: string[] = ['id', 'name', 'age', 'mail','option'];
   dataSource = ELEMENT_DATA;
 
-  constructor(){}
+  public affiliates: Affiliate[];
 
-  ngOnInit():void{}
+  constructor(private affiliatesService: AffiliatesService){}
+
+  ngOnInit():void{
+    this.getListAffiliates();
+
+  }
+
+  getListAffiliates(){
+    this.affiliatesService.getListAffiliates().subscribe(response =>
+      {this.affiliates=response
+      console.log(response);
+      }
+    )
+  }
 
 }
