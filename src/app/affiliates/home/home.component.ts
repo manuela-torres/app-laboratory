@@ -137,7 +137,7 @@ export class HomeComponent implements OnInit { //implements OnInit
 
   columnsToDisplay = ['expand','idAffiliate', 'name', 'age', 'mail'];
 
-  displayedColumns = ['expand_second','id', 'date', 'hora', 'idTest'];
+  displayedColumns = ['id', 'date', 'hora', 'idTest','expand_second'];
 
 
   //public appointmentsHome?: Appointment;
