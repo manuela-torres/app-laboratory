@@ -47,42 +47,75 @@
 
 <div class="wrapper">
 
-  <!-- <h1>
-    Mat Table Example with Expnad Collapse
-  </h1>
-  <button (click)="manageAllRows(true)">Expand All</button>
-  <button (click)="manageAllRows(false)">Collpase All</button> -->
-
   <table mat-table [dataSource]="affiliatesHome" multiTemplateDataRows class="mat-elevation-z8">
 
+    <ng-container matColumnDef="expand">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element; let i = index" style="text-align: left">
+        <a> <mat-icon>expand_more</mat-icon>
+        </a>
+      </td>
+    </ng-container>
 
+    <ng-container matColumnDef="idAffiliate">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.idAffiliate}} </td>
+    </ng-container>
 
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
 
-    <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-      <th mat-header-cell *matHeaderCellDef> {{column}}</th>
-      <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="mail">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.mail}} </td>
     </ng-container>
 
 
-    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
-    <ng-container matColumnDef="expandedDetail">
-      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
-        <div class="example-element-detail" [@detailExpand]="element.expanded ? 'expanded' : 'collapsed'">
-          <table class="detail-table">
-           <tr>
-              <th>Id</th>
-              <th>fecha</th>
-              <th>hora</th>
-              <th>Nombre de la prueba</th>
-            </tr>
-            <tr>
 
-              <td >{{this.appointments|json}}</td>
-              <td>{{this.appointments}}</td>
-              <td>{{this.appointments}}</td>
-              <td>{{this.appointments}}</td>
-          </tr>
-          </table>
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+        <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+
+          <div class="example-container mat-elevation-z8">
+            <mat-table #table [dataSource]="appointments">
+              <!-- Position Column -->
+              <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef> Id cita </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="date">
+                <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="hora">
+                <mat-header-cell *matHeaderCellDef> Hora </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.hora}} </mat-cell>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="idTest">
+                <mat-header-cell *matHeaderCellDef> Nombre de prueba </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.idTest.name}} </mat-cell>
+              </ng-container>
+
+
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+
         </div>
       </td>
     </ng-container>
@@ -91,7 +124,8 @@
 
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
-      [class.example-expanded-row]="element.expanded" (click)="toggleRow(element, element.idAffiliate)">
+      [class.example-expanded-row]="element.expanded" (click)="toggleRow(element, element.idAffiliate)"
+      (click)="expandedElement = expandedElement === element ? null : element">
     </tr>
     <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
   </table>
