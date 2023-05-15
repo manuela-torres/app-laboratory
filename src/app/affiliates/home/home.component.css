@@ -9,6 +9,7 @@
 .example-element-detail {
   overflow: hidden;
   display: flex;
+  justify-content: center;
 }
 
 .detail-table {
@@ -27,3 +28,5 @@
   overflow: auto;
   max-height: 500px;
 }
+
+
