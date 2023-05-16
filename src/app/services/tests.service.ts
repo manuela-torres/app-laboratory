@@ -26,4 +26,9 @@ export class TestsService {
     )
 
   }
+
+  createTest(test:Test): Observable<Test>{
+    return this.httpClient.post<Test>(`${this.baseUrl}/test`,test);
+
+  }
 }

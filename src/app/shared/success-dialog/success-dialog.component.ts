@@ -21,7 +21,7 @@ export class SuccessDialogComponent {
     OnClickList(){
 
       this.dialogRef.close();
-      this.router.navigate(['/affiliates'])
+      this.router.navigate(['/home'])
 
     }
 

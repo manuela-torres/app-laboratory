@@ -5,34 +5,42 @@
 
   <div style="margin-top: 1rem;">
 
-    <form class="example-form" style="display:inline">
+    <form class="example-form" style="display:inline" [formGroup]="testForm" (ngSubmit)="onSubmit()">
       <mat-form-field class="example-full-width">
         <mat-label>Nombre de la prueba</mat-label>
-        <input matInput placeholder="" type="text" required>
+        <input matInput placeholder="" type="text" required formControlName="name">
       </mat-form-field>
-    </form>
 
     <span class="example-fill-remaining-space" style="margin-left:5rem"></span>
 
-
-    <form class="example-form" style="display:inline">
       <mat-form-field class="example-full-width">
         <mat-label>Descripción</mat-label>
-        <input matInput placeholder="" value="" type="text" required>
+        <input matInput placeholder="" value="" type="text" required formControlName="description">
       </mat-form-field>
+
+      <span>
+        <button mat-raised-button color="primary" style="margin-left: 55rem;" type="submit" >Guardar</button>
+        <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
+      </span>
+
+
+
     </form>
+
+
 
 
     <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
 
-
+    <button (click)="openDialog()">Ejemplo</button>
 </div>
 
 
-<span>
-  <button mat-raised-button color="primary" style="margin-left: 55rem;" >Guardar</button>
-  <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
-</span>
+
 
 
 </div>
+
+<pre>
+  {{currentTest|json}}
+</pre>

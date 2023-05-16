@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class CreateAffiliateComponent {
 
 public affiliateForm = new FormGroup({
+
   idAffiliate: new FormControl <number>(100),
   name: new FormControl('',{nonNullable:true}),
   age: new FormControl<number>(0),
@@ -44,7 +45,7 @@ public affiliateForm = new FormGroup({
 
   openDialog():void{
     const dialogRef=this.dialog.open(SuccessDialogComponent,{
-      width:'230px',
+
 
     });
     dialogRef.afterClosed().subscribe(respuesta=>{

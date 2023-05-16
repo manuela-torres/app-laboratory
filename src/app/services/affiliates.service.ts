@@ -10,7 +10,7 @@ export class AffiliatesService {
 
   private baseUrl="http://localhost:8080/api/controller";
 
-  private headers:HttpHeaders= new HttpHeaders({'Content-Type':'application/json'});
+  //private headers:HttpHeaders= new HttpHeaders({'Content-Type':'application/json'});
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,8 +18,12 @@ export class AffiliatesService {
     return this.httpClient.get<Affiliate[]>(`${this.baseUrl}/affiliates`);
   }
 
+  // createAffiliate(affiliate:Affiliate): Observable<Affiliate>{
+  //   return this.httpClient.post<Affiliate>(`${this.baseUrl}/affiliates`, affiliate,{headers:this.headers});
+  // }
+
   createAffiliate(affiliate:Affiliate): Observable<Affiliate>{
-    return this.httpClient.post<Affiliate>(`${this.baseUrl}/affiliates`, affiliate,{headers:this.headers});
+    return this.httpClient.post<Affiliate>(`${this.baseUrl}/affiliates`,affiliate);
 
   }
 }
