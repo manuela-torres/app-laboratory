@@ -11,7 +11,6 @@ import { AffiliatesService } from 'src/app/services/affiliates.service';
 export class AffiliateListComponent {
   displayedColumns: string[] = ['id', 'name', 'age', 'mail','option'];
 
-
   public affiliates: Affiliate[];
 
   constructor(private affiliatesService: AffiliatesService){}
@@ -28,5 +27,7 @@ export class AffiliateListComponent {
       }
     )
   }
+
+
 
 }

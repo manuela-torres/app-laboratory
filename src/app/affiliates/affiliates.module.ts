@@ -8,6 +8,7 @@ import { CreateAffiliateComponent } from './create-affiliate/create-affiliate.co
 import { AffiliateListComponent } from './affiliate-list/affiliate-list.component';
 import { MaterialModule } from '../material/material.module';
 import { HomeComponent } from './home/home.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HomeComponent } from './home/home.component';
   imports: [
     CommonModule,
     AffiliatesRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
   ],
 
   exports: [

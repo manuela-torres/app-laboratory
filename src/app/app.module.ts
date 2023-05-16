@@ -8,6 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { MatTableModule} from '@angular/material/table';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import {FormsModule} from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { SuccessDialogComponent } from './shared/success-dialog/success-dialog.component';
 
 
 
@@ -17,6 +22,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     HeaderComponent,
+    ConfirmDialogComponent,
+    SuccessDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,9 +31,13 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MaterialModule,
     MatTableModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatDialogModule,
+    MatButtonModule
 
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

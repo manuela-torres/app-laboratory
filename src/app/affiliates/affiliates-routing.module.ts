@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from '../pages/layout/layout.component';
 import { AffiliateListComponent } from './affiliate-list/affiliate-list.component';
 import { CreateAffiliateComponent } from './create-affiliate/create-affiliate.component';
 import { DeleteAffiliateComponent } from './delete-affiliate/delete-affiliate.component';
@@ -8,7 +7,7 @@ import { EditAffiliateComponent } from './edit-affiliate/edit-affiliate.componen
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-    {path:'', component:LayoutComponent},
+    {path:'', component:HomeComponent},
     //{path:'affiliates-list', component: AffiliateListComponent},
     {path:'create-affiliate', component: CreateAffiliateComponent},
     {path:'delete-affiliate/:id', component: DeleteAffiliateComponent},

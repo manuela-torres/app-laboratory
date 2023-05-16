@@ -5,44 +5,52 @@
 
   <div style="margin-top: 1rem;">
 
-        <form class="example-form" style="display:inline">
-          <mat-form-field class="example-full-width">
-            <mat-label>Nombre completo</mat-label>
-            <input matInput placeholder="">
-          </mat-form-field>
-        </form>
-
-        <span class="example-fill-remaining-space" style="margin-left:5rem"></span>
+            <form class="example-form" style="display:inline" [formGroup]="affiliateForm" (ngSubmit)="onSubmit()">
+              <mat-form-field class="example-full-width">
+                <mat-label>Nombre completo</mat-label>
+                <input matInput placeholder="" required formControlName="name">
+              </mat-form-field>
 
 
-        <form class="example-form" style="display:inline">
-          <mat-form-field class="example-full-width">
-            <mat-label>Edad</mat-label>
-            <input matInput placeholder="" value="">
-          </mat-form-field>
-        </form>
+            <span class="example-fill-remaining-space" style="margin-left:5rem"></span>
 
-        <span class="example-fill-remaining-space" style="margin-left:5rem"></span>
+              <mat-form-field class="example-full-width">
+
+                <mat-label>Edad</mat-label>
+                <input matInput placeholder="" value="" required formControlName="age">
+              </mat-form-field>
+
+              <span class="example-fill-remaining-space" style="margin-left:5rem"></span>
+
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="" value="" required formControlName="mail">
+              </mat-form-field>
+
+              <span>
+                <button mat-raised-button color="primary" style="margin-left: 55rem;"
+                type="submit" (click)="openDialog()">Guardar</button>
+                <button mat-raised-button color="warn" style="margin-left: 1rem;" routerLink="/affiliates">Cancelar</button>
+              </span>
 
 
-        <form class="example-form" style="display:inline">
-          <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="" value="">
-          </mat-form-field>
-        </form>
+            </form>
+
+            <button (click)="openDialog()">Ejemplo</button>
 
         <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
+
+
 
 
   </div>
 
 
-    <span>
-      <button mat-raised-button color="primary" style="margin-left: 55rem;" >Guardar</button>
-      <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
-    </span>
 
 </div>
+
+<pre>
+  {{currentAffiliate|json}}
+</pre>
 
 
