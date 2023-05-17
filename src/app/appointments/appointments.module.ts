@@ -7,6 +7,7 @@ import { CreateAppointmentComponent } from './create-appointment/create-appointm
 import { DelateAppointmentComponent } from './delate-appointment/delate-appointment.component';
 import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
 import { MaterialModule } from '../material/material.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { MaterialModule } from '../material/material.module';
   imports: [
     CommonModule,
     AppointmentsRoutingModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
   ]
 })
 export class AppointmentsModule { }

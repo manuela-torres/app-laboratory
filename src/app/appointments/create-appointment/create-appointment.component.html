@@ -5,9 +5,12 @@
 
   <div style="margin-top: 1rem;">
 
+
+  <form class="example-form" style="display:inline" [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
+
     <mat-form-field appearance="fill">
       <mat-label>Seleccione una fecha</mat-label>
-      <input matInput [matDatepicker]="picker">
+      <input matInput [matDatepicker]="picker" formControlName="date" value="">
       <mat-hint>MM/DD/YYYY</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
@@ -16,47 +19,52 @@
     <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
 
     <!--Revisar como hacer este input de hora-->
-    <form class="example-form" style="display:inline" >
+
       <mat-form-field class="example-full-width">
         <mat-label>Hora</mat-label>
-        <input type="time" matInput value="11:11">
+        <input type="time" matInput value="11:11" formControlName="hora">
         <mat-hint>HH:MM AM/PM</mat-hint>
 
       </mat-form-field>
-    </form>
-
 
 
     <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
 
-
-    <form class="example-form" style="display:inline">
       <mat-form-field class="example-full-width">
         <mat-label>ID prueba</mat-label>
-        <input matInput placeholder="" value="">
+        <input matInput placeholder="" value="" formControlName="idTest">
       </mat-form-field>
-    </form>
+
 
     <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
 
 
-    <form class="example-form" style="display:inline">
       <mat-form-field class="example-full-width">
         <mat-label>ID afiliado</mat-label>
-        <input matInput placeholder="" value="">
+        <input matInput placeholder="" value="" formControlName="idAffiliate">
       </mat-form-field>
+
+      <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
+
+      <span>
+        <button mat-raised-button color="primary" style="margin-left: 55rem;" type="submit">Guardar</button>
+        <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
+      </span>
     </form>
 
-    <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
+
+
 
 
 </div>
+<button (click)="ejemplo()">Ejemplo</button>
+<pre>
+  {{currentAppointment|json}}
+
+</pre>
 
 
-<span>
-  <button mat-raised-button color="primary" style="margin-left: 55rem;" >Guardar</button>
-  <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
-</span>
+
 
 
 </div>

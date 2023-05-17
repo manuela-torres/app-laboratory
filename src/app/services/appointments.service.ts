@@ -24,5 +24,10 @@ export class AppointmentsService {
     // )
   }
 
+  createAppointment(appointment:Appointment): Observable<Appointment>{
+    return this.httpClient.post<Appointment>(`${this.baseUrl}/appointments`,appointment);
+
+  }
+
 
 }
