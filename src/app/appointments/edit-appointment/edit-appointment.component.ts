@@ -7,6 +7,7 @@ import { Affiliate } from 'src/app/models/affiliate';
 import { Appointment } from 'src/app/models/appointment';
 import { IdTest } from 'src/app/models/idTest';
 import { AppointmentsService } from 'src/app/services/appointments.service';
+import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
 
 @Component({
   selector: 'app-edit-appointment',
@@ -86,6 +87,16 @@ export class EditAppointmentComponent {
       if(this.appointmentEditForm.invalid) return;
       this.updateAppointment();
 
+    }
+
+    openDialog():void{
+      const dialogRef=this.dialog.open(SuccessDialogComponent,{
+
+
+      });
+      dialogRef.afterClosed().subscribe(respuesta=>{
+        console.log(respuesta)
+      })
     }
 
 }
