@@ -12,6 +12,7 @@ export class AffiliateListComponent {
   displayedColumns: string[] = ['id', 'name', 'age', 'mail','option'];
 
   public affiliates: Affiliate[];
+  public pathEdith = '/affiliates/editaffiliate/'
 
   constructor(private affiliatesService: AffiliatesService){}
 

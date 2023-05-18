@@ -18,12 +18,22 @@ export class AffiliatesService {
     return this.httpClient.get<Affiliate[]>(`${this.baseUrl}/affiliates`);
   }
 
+  getAffiliateById(id:number): Observable<any[]>{
+    return this.httpClient.get<any[]>(`${this.baseUrl}/affiliates/${id}`)
+  }
+
   // createAffiliate(affiliate:Affiliate): Observable<Affiliate>{
   //   return this.httpClient.post<Affiliate>(`${this.baseUrl}/affiliates`, affiliate,{headers:this.headers});
   // }
 
   createAffiliate(affiliate:Affiliate): Observable<Affiliate>{
     return this.httpClient.post<Affiliate>(`${this.baseUrl}/affiliates`,affiliate);
+
+  }
+
+  updateAffiliate(affiliate:Affiliate): Observable<Affiliate>{
+    if(!affiliate.idAffiliate) throw Error ('No existe el afiliado')
+    return this.httpClient.put<Affiliate>(`${this.baseUrl}/affiliates/${affiliate.idAffiliate}`,affiliate);
 
   }
 }

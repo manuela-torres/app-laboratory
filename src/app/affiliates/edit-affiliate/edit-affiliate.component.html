@@ -5,31 +5,37 @@
 
   <div style="margin-top: 1rem;">
 
-        <form class="example-form" style="display:inline">
+        <form class="example-form" style="display:inline" [formGroup]="editAffiliateForm" (ngSubmit)="onSubmit()">
           <mat-form-field class="example-full-width">
             <mat-label>Nombre completo</mat-label>
-            <input matInput placeholder="">
+            <input matInput placeholder="" formControlName="name">
           </mat-form-field>
-        </form>
+
 
         <span class="example-fill-remaining-space" style="margin-left:5rem"></span>
 
 
-        <form class="example-form" style="display:inline">
+
           <mat-form-field class="example-full-width">
             <mat-label>Edad</mat-label>
-            <input matInput placeholder="" value="">
+            <input matInput placeholder="" value="" formControlName="age">
           </mat-form-field>
-        </form>
+
 
         <span class="example-fill-remaining-space" style="margin-left:5rem"></span>
 
 
-        <form class="example-form" style="display:inline">
+
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="" value="">
+            <input matInput placeholder="" value="" formControlName="mail">
           </mat-form-field>
+
+          <span>
+            <button mat-raised-button color="primary" style="margin-left: 55rem;" type="submit" (click)="openDialog()">Guardar</button>
+            <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
+          </span>
+
         </form>
 
         <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
@@ -38,9 +44,6 @@
   </div>
 
 
-    <span>
-      <button mat-raised-button color="primary" style="margin-left: 55rem;" >Guardar</button>
-      <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
-    </span>
+
 
 </div>
