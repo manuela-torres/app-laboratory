@@ -29,5 +29,15 @@ export class AppointmentsService {
 
   }
 
+  getAppointmentById(id:number): Observable<any[]>{
+    return this.httpClient.get<any[]>(`${this.baseUrl}/appointments/${id}`)
+  }
+
+  updateAppointment(appointment:Appointment): Observable<Appointment>{
+    if(!appointment.id) throw Error ('No existe la cita')
+    return this.httpClient.put<Appointment>(`${this.baseUrl}/appointments/${appointment.id}`,appointment);
+
+  }
+
 
 }
