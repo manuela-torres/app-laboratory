@@ -1,4 +1,4 @@
-export class Affiliate{
+export class IdAffiliate {
   idAffiliate: number;
   name: string;
   age: number;

@@ -1,9 +1,19 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { formatDate } from '@angular/common';
+import { Component, LOCALE_ID, Inject } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Affiliate } from 'src/app/models/affiliate';
 import { Appointment } from 'src/app/models/appointment';
+import { IdTest } from 'src/app/models/idTest';
+import { Test } from 'src/app/models/test';
 import { AppointmentsService } from 'src/app/services/appointments.service';
+import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
+
+
+
+
+
 
 @Component({
   selector: 'app-create-appointment',
@@ -12,55 +22,73 @@ import { AppointmentsService } from 'src/app/services/appointments.service';
 })
 export class CreateAppointmentComponent {
 
-  public appointmentForm = new FormGroup({// Forma 1
+  private objetoAppointment :Appointment = new Appointment();
+  private objetoTest: IdTest= new IdTest();
+  private objetoAffiliate: Affiliate = new Affiliate();
 
-    id:new FormControl <number>(100),
-    date:new FormControl (''),
-    hora: new FormControl(''),
-    idTest:new FormControl(''),
-    idAffiliate:new FormControl<number>(100),
+  public appointmentForm:FormGroup = this.fb.group({
 
+    id: [],
+    date:[''],
+    hora: [''],
+    idTest:[],
+    idAffiliate:[],
 
   });
 
-  citas:Appointment={ //Forma 2
-    id:0,
-    date:"",
-    hora:"",
-    idTest:"",
-    idAffiliate:0
-  }
+
 
   constructor( private router:Router,
     public dialog: MatDialog,
-    private appointmentServicePost: AppointmentsService,){}
+    private appointmentServicePost: AppointmentsService,
+    @Inject(LOCALE_ID) private locale: string,
+    private fb: FormBuilder,
 
-//forma 1
-    get currentAppointment(): Appointment{
-      const appointment = this.appointmentForm.value as Appointment;
-      return appointment;
+    ){}
 
-    }
-//-----
-    ejemplo():void{
 
-      this.citas=this.appointmentForm.value as Appointment;
+    ngOnInit(){
 
-      console.log(this.citas) //se imprime los inciales porque no le he pasado nada
-      console.log(this.currentAppointment) //se imprime lo que le paso pues los alcanza a capturar
+
     }
 
 
     onSubmit():void{
-    if(this.appointmentForm.invalid) return;
     this.createAppointment();
-    console.log(this.currentAppointment)
-    console.log(this.citas)
+
   }
 
+
+
   createAppointment (){
-    this.appointmentServicePost.createAppointment(this.citas).subscribe(dato =>{
+
+    this.objetoTest.idTest = this.appointmentForm.value.idTest,
+
+    this.objetoAffiliate.idAffiliate= this.appointmentForm.value.idAffiliate;
+
+    //this.objetoAppointment.id = 9,
+
+    let dateChange= new Date (this.appointmentForm.value.date)
+
+    this.objetoAppointment.date = dateChange.toLocaleDateString('es-CO',{day:'2-digit', month:'2-digit', year:'numeric'})
+    this.objetoAppointment.hora = this.appointmentForm.value.hora,
+    this.objetoAppointment.idAffiliate = this.objetoAffiliate,
+    this.objetoAppointment.idTest = this.objetoTest,
+
+
+    this.appointmentServicePost.createAppointment(this.objetoAppointment).subscribe(dato =>{
       console.log(dato);})
   }
+
+  openDialog():void{
+    const dialogRef=this.dialog.open(SuccessDialogComponent,{
+
+
+    });
+    dialogRef.afterClosed().subscribe(respuesta=>{
+      console.log(respuesta)
+    })
+  }
+
 
 }

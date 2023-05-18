@@ -14,8 +14,10 @@ export class TestListComponent {
   displayedColumns: string[] = ['id', 'name', 'description','option'];
 
   public tests: Test[];
+  public prueba: Test[];
+  public pathEdith = '/test/edittest/'
 
-  constructor(private testsService: TestsService){}
+  constructor(private testsService: TestsService, private testService1: TestsService,){}
 
   ngOnInit():void{
     this.getListTest1();
@@ -33,6 +35,19 @@ export class TestListComponent {
       //this.tests= this.tests.map((test, i) =>({counter: i+1, ...test}));
 
     })
+  }
+
+  getTestById(idTest: number){
+    this.testService1.getTestById(idTest).subscribe(response=>
+      {this.prueba=response;
+        console.log(response);
+      }
+      )
+  }
+
+  selectTest(idTest:number){
+    this.getTestById(idTest)
+
   }
 
 }

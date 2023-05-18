@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Affiliate } from 'src/app/models/affiliate';
 import { AffiliatesService } from 'src/app/services/affiliates.service';
 import { AffiliateListComponent } from '../affiliate-list/affiliate-list.component';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,25 +14,23 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CreateAffiliateComponent {
 
-public affiliateForm = new FormGroup({
 
-  idAffiliate: new FormControl <number>(100),
-  name: new FormControl('',{nonNullable:true}),
-  age: new FormControl<number>(0),
-  mail: new FormControl(''),
+public affiliateForm:FormGroup = this.fb.group({
+
+  idAffiliate: [],
+  name:[''],
+  hora: [''],
+  age:[],
+  mail:[],
+
 });
 
   constructor(private affiliatesServicePost: AffiliatesService, private router:Router,
-    public dialog: MatDialog){}
+    public dialog: MatDialog, private fb: FormBuilder){}
 
-  get currentAffiliate(): Affiliate{
-    const affiliate = this.affiliateForm.value as Affiliate;
-    return affiliate;
-
-  }
 
   createAffiliate (){
-    this.affiliatesServicePost.createAffiliate(this.currentAffiliate).subscribe(dato =>{
+    this.affiliatesServicePost.createAffiliate(this.affiliateForm.value).subscribe(dato =>{
       console.log(dato);})
   }
 

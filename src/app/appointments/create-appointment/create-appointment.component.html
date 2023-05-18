@@ -10,10 +10,10 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Seleccione una fecha</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="date" value="">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
+      <input matInput [matDatepicker]="dp" formControlName="date" value="">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+      <mat-datepicker #dp></mat-datepicker>
     </mat-form-field>
 
     <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
@@ -47,7 +47,7 @@
       <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
 
       <span>
-        <button mat-raised-button color="primary" style="margin-left: 55rem;" type="submit">Guardar</button>
+        <button mat-raised-button color="primary" style="margin-left: 55rem;" type="submit" (click)="openDialog()">Guardar</button>
         <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
       </span>
     </form>
@@ -57,11 +57,8 @@
 
 
 </div>
-<button (click)="ejemplo()">Ejemplo</button>
-<pre>
-  {{currentAppointment|json}}
 
-</pre>
+
 
 
 

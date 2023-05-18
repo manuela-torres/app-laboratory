@@ -19,11 +19,11 @@ export class TestsService {
 
   }
 
-  getTestById(id:number): Observable<Test|undefined>{
-    return this.httpClient.get<Test>(`${this.baseUrl}/test/${id}`)
-    .pipe(
-      catchError (error => of (undefined)) //fernando 195
-    )
+  getTestById(id:number): Observable<any[]>{
+    return this.httpClient.get<any[]>(`${this.baseUrl}/test/${id}`)
+    // .pipe(
+    //   catchError (error => of (undefined)) //fernando 195
+    // )
 
   }
 
@@ -31,4 +31,12 @@ export class TestsService {
     return this.httpClient.post<Test>(`${this.baseUrl}/test`,test);
 
   }
+
+
+  updateTest(test:Test): Observable<Test>{
+    return this.httpClient.put<Test>(`${this.baseUrl}/test/${test.idTest}`,test);
+
+  }
+
+
 }
