@@ -3,4 +3,33 @@
   <h2 style="margin-bottom: 0%;">Pruebas de laboratorio- Eliminar prueba</h2>
   <hr color="blue" style="margin: 0%;">
 
+
+<div style="margin: 3rem 0rem 0rem 25rem  ;">
+  <mat-card class="example-card" style="padding-left: 55px;">
+    <mat-card-header>
+      <mat-card-title>Test a eliminar</mat-card-title>
+    </mat-card-header>
+    <br>
+    <mat-card-content class="mat-card">
+      <h4 textde>ID Test: </h4>
+      <td>{{testId}}</td>
+      <br>
+      <h4>Nombre: </h4>
+      <td>{{testName}}</td>
+      <br>
+      <h4>Descripción: </h4>
+      <td>{{testDescription}}</td>
+    </mat-card-content>
+    <mat-card-actions>
+
+      <button mat-button (click)="openDialogDelete()">Eliminar</button>
+      <button mat-button routerLink="/test">Cancelar</button>
+
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+
+
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { Test } from '../models/test';
 
 @Injectable({
@@ -35,6 +35,15 @@ export class TestsService {
 
   updateTest(test:Test): Observable<Test>{
     return this.httpClient.put<Test>(`${this.baseUrl}/test/${test.idTest}`,test);
+
+  }
+
+  deleteTestById(id:number): Observable<boolean>{
+    return this.httpClient.delete(`${this.baseUrl}/test/${id}`)
+    .pipe(
+      catchError (err => of (false)),
+      map (resp=> true)
+    );
 
   }
 

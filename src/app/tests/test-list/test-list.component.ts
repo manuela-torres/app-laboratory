@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { Test } from 'src/app/models/test';
 import { TestsService } from 'src/app/services/tests.service';
+import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -15,8 +19,10 @@ export class TestListComponent {
 
   public tests: Test[];
   public pathEdith = '/test/edittest/'
+  public pathDelete = '/test/delete-test/'
 
-  constructor(private testsService: TestsService, private testService1: TestsService,){}
+  constructor(private testsService: TestsService, private testService1: TestsService,
+    private dialog: MatDialog,  private activetedRoute: ActivatedRoute){}
 
   ngOnInit():void{
     this.getListTest1();
@@ -33,6 +39,10 @@ export class TestListComponent {
 
     })
   }
+
+
+
+
 
 
 }
