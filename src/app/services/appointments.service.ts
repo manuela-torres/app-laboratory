@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable,catchError, of } from 'rxjs';
+import { Observable,catchError, map, of } from 'rxjs';
 import { Appointment } from '../models/appointment';
 
 @Injectable({
@@ -36,6 +36,15 @@ export class AppointmentsService {
   updateAppointment(appointment:Appointment): Observable<Appointment>{
     if(!appointment.id) throw Error ('No existe la cita')
     return this.httpClient.put<Appointment>(`${this.baseUrl}/appointments/${appointment.id}`,appointment);
+
+  }
+
+  deleteAppointmentById(id:number): Observable<boolean>{
+    return this.httpClient.delete(`${this.baseUrl}/appointments/${id}`)
+    .pipe(
+      catchError (err => of (false)),
+      map (resp=> true)
+    );
 
   }
 

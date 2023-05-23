@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { Affiliate } from '../models/affiliate';
 
 @Injectable({
@@ -34,6 +34,15 @@ export class AffiliatesService {
   updateAffiliate(affiliate:Affiliate): Observable<Affiliate>{
     if(!affiliate.idAffiliate) throw Error ('No existe el afiliado')
     return this.httpClient.put<Affiliate>(`${this.baseUrl}/affiliates/${affiliate.idAffiliate}`,affiliate);
+
+  }
+
+  deleteAffiliateById(id:number): Observable<boolean>{
+    return this.httpClient.delete(`${this.baseUrl}/affiliates/${id}`)
+    .pipe(
+      catchError (err => of (false)),
+      map (resp=> true)
+    );
 
   }
 }

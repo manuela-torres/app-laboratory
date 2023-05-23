@@ -13,6 +13,7 @@ export class AffiliateListComponent {
 
   public affiliates: Affiliate[];
   public pathEdith = '/affiliates/editaffiliate/'
+  public pathDelete = '/affiliates/delete-affiliate/'
 
   constructor(private affiliatesService: AffiliatesService){}
 

@@ -3,4 +3,35 @@
   <h2 style="margin-bottom: 0%;">Citas- Eliminar cita</h2>
   <hr color="blue" style="margin: 0%;">
 
+  <div style="margin: 1rem 0rem 0rem 25rem  ;">
+    <mat-card class="example-card" style="padding-left: 55px;">
+      <mat-card-header>
+        <mat-card-title>Test a eliminar</mat-card-title>
+      </mat-card-header>
+      <br>
+      <mat-card-content class="mat-card">
+        <h4 >ID Cita: </h4>
+        <td>{{appointmentId}}</td>
+        <br>
+        <h4>Fecha </h4>
+        <td>{{appointmentDate}}</td>
+        <br>
+        <h4>Hora (formato 24h):</h4>
+        <td>{{appointmentTime}}</td>
+        <br>
+        <h4>ID Test </h4>
+        <td>{{appointmentIdTest}}</td>
+        <br>
+        <h4>ID Afiliado </h4>
+        <td>{{appointmentIdAffiliate}}</td>
+      </mat-card-content>
+      <mat-card-actions>
+
+        <button mat-button (click)="openDialogDelete()">Eliminar</button>
+        <button mat-button routerLink="/appointments">Cancelar</button>
+
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
 </div>

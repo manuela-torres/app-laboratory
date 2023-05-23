@@ -15,6 +15,7 @@ export class AppointmentsListComponent {
 
   public appointments: Appointment[];
   public pathEdith = '/appointments/editappointment/'
+  public pathDelete = '/appointments/delete-appointment/'
 
   constructor(private appointmentsService:AppointmentsService){}
 

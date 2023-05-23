@@ -3,4 +3,32 @@
   <h2 style="margin-bottom: 0%;">Afiliados- Eliminar afiliado</h2>
   <hr color="blue" style="margin: 0%;">
 
+  <div style="margin: 3rem 0rem 0rem 25rem  ;">
+    <mat-card class="example-card" style="padding-left: 55px;">
+      <mat-card-header>
+        <mat-card-title>Afiliado a eliminar</mat-card-title>
+      </mat-card-header>
+      <br>
+      <mat-card-content class="mat-card">
+        <h4 textde>ID Afiliado: </h4>
+        <td>{{affiliateId}}</td>
+        <br>
+        <h4>Nombre: </h4>
+        <td>{{affiliateName}}</td>
+        <br>
+        <h4>Edad: </h4>
+        <td>{{affiliateAge}}</td>
+        <br>
+        <h4>Email: </h4>
+        <td>{{affiliateMail}}</td>
+      </mat-card-content>
+      <mat-card-actions>
+
+        <button mat-button (click)="openDialogDelete()">Eliminar</button>
+        <button mat-button routerLink="/affiliates">Cancelar</button>
+
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
 </div>
