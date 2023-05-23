@@ -48,6 +48,7 @@ public affiliateForm:FormGroup = this.fb.group({
     });
     dialogRef.afterClosed().subscribe(respuesta=>{
       console.log(respuesta)
+      this.router.navigate(['/affiliates'])
     })
   }
 

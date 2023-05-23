@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { AffiliatesService } from 'src/app/services/affiliates.service';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
@@ -24,7 +24,8 @@ export class EditAffiliateComponent {
 
   constructor(private affiliatesService: AffiliatesService,
     public dialog: MatDialog,private fb: FormBuilder,
-    private activetedRoute: ActivatedRoute){}
+    private activetedRoute: ActivatedRoute,
+    private router:Router){}
 
 
     ngOnInit():void{
@@ -70,6 +71,7 @@ export class EditAffiliateComponent {
       });
       dialogRef.afterClosed().subscribe(respuesta=>{
         console.log(respuesta)
+        this.router.navigate(['/affiliates'])
       })
     }
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Affiliate } from 'src/app/models/affiliate';
 import { Appointment } from 'src/app/models/appointment';
@@ -43,7 +43,8 @@ export class EditAppointmentComponent {
     private fb: FormBuilder,
     private activetedRoute: ActivatedRoute,
     private testsService: TestsService,
-    private affiliatesService: AffiliatesService
+    private affiliatesService: AffiliatesService,
+    private router:Router
 
     ){}
 
@@ -125,6 +126,7 @@ export class EditAppointmentComponent {
       });
       dialogRef.afterClosed().subscribe(respuesta=>{
         console.log(respuesta)
+        this.router.navigate(['/appointments'])
       })
     }
 

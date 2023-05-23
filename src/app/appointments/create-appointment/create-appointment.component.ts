@@ -121,6 +121,7 @@ export class CreateAppointmentComponent {
     });
     dialogRef.afterClosed().subscribe(respuesta=>{
       console.log(respuesta)
+      this.router.navigate(['/appointments'])
     })
   }
 

@@ -47,6 +47,7 @@ export class CreateTestComponent {
     });
     dialogRef.afterClosed().subscribe(respuesta=>{
       console.log(respuesta)
+      this.router.navigate(['/test'])
     })
   }
 
