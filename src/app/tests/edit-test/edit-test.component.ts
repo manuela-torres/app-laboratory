@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
@@ -17,8 +17,8 @@ export class EditTestComponent {
   public editTestForm:FormGroup = this.fb.group({
 
     idTest: [],
-    name:[''],
-    description: [''],
+    name:['', Validators.required],
+    description: ['', Validators.required],
 
   });
 

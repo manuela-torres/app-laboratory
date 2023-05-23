@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { Affiliate } from 'src/app/models/affiliate';
 import { Appointment } from 'src/app/models/appointment';
 import { IdTest } from 'src/app/models/idTest';
+import { Test } from 'src/app/models/test';
+import { AffiliatesService } from 'src/app/services/affiliates.service';
 import { AppointmentsService } from 'src/app/services/appointments.service';
+import { TestsService } from 'src/app/services/tests.service';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
 
 @Component({
@@ -20,13 +23,17 @@ export class EditAppointmentComponent {
   private objetoTest: IdTest= new IdTest();
   private objetoAffiliate: Affiliate = new Affiliate();
 
+  public appointments: Appointment[];
+  public tests: Test[];
+  public affiliates: Affiliate[];
+
   public appointmentEditForm:FormGroup = this.fb.group({
 
     id: [],
-    date:[''],
-    hora: [''],
-    idTest:[],
-    idAffiliate:[],
+    date:['', Validators.required],
+    hora: ['', Validators.required],
+    idTest:['', Validators.required],
+    idAffiliate:['', Validators.required],
 
   });
 
@@ -34,7 +41,9 @@ export class EditAppointmentComponent {
     public dialog: MatDialog,
     private appointmentService: AppointmentsService,
     private fb: FormBuilder,
-    private activetedRoute: ActivatedRoute
+    private activetedRoute: ActivatedRoute,
+    private testsService: TestsService,
+    private affiliatesService: AffiliatesService
 
     ){}
 
@@ -60,7 +69,27 @@ export class EditAppointmentComponent {
         return;
       })
 
+      this.getListTest1();
+      this.getListAffiliates();
 
+
+    }
+
+    getListTest1(){
+
+      this.testsService.getListTest().subscribe(response =>{
+        this.tests= response;
+        console.log(this.tests)
+
+      })
+    }
+
+    getListAffiliates(){
+      this.affiliatesService.getListAffiliates().subscribe(response =>
+        {this.affiliates=response
+        console.log(response);
+        }
+      )
     }
 
 

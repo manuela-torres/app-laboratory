@@ -26,19 +26,31 @@
       <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
 
 
-      <form class="example-form" style="display:inline">
-        <mat-form-field class="example-full-width">
+      <form class="example-form" style="display:inline" [formGroup]="affiliateIdForm" (ngSubmit)="onSearchAffiliateById()">
+       <!--  <mat-form-field class="example-full-width">
           <mat-label>ID afiliado</mat-label>
           <input matInput placeholder="" value="">
-        </mat-form-field>
-      </form>
+        </mat-form-field> -->
 
-      <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
+        <mat-form-field>
+          <mat-label>ID Afiliado</mat-label>
+          <mat-select formControlName="idAffiliate1">
+            <mat-option *ngFor="let affiliate of affiliateCopy" [value]="affiliate.idAffiliate">
+              {{affiliate.idAffiliate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
 
         <span>
-        <a mat-mini-fab color="primary">
-            <mat-icon>search</mat-icon></a>
+        <button mat-mini-fab color="primary" type="submit">
+            <mat-icon>search</mat-icon></button>
         </span>
+
+      </form>
+
+
 
     </div>
 

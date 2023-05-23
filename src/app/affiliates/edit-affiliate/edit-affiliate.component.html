@@ -8,7 +8,7 @@
         <form class="example-form" style="display:inline" [formGroup]="editAffiliateForm" (ngSubmit)="onSubmit()">
           <mat-form-field class="example-full-width">
             <mat-label>Nombre completo</mat-label>
-            <input matInput placeholder="" formControlName="name">
+            <input matInput placeholder="" formControlName="name" type="text">
           </mat-form-field>
 
 
@@ -18,7 +18,7 @@
 
           <mat-form-field class="example-full-width">
             <mat-label>Edad</mat-label>
-            <input matInput placeholder="" value="" formControlName="age">
+            <input matInput placeholder="" value="" formControlName="age" type="number">
           </mat-form-field>
 
 
@@ -28,12 +28,13 @@
 
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="" value="" formControlName="mail">
+            <input matInput placeholder="" value="" formControlName="mail" type="email">
           </mat-form-field>
 
           <span>
-            <button mat-raised-button color="primary" style="margin-left: 55rem;" type="submit" (click)="openDialog()">Guardar</button>
-            <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
+            <button mat-raised-button color="primary" style="margin-left: 55rem;" type="submit" (click)="openDialog()"
+            [disabled]="editAffiliateForm.invalid">Guardar</button>
+            <button mat-raised-button color="warn" style="margin-left: 1rem;" routerLink="/affiliates">Cancelar</button>
           </span>
 
         </form>

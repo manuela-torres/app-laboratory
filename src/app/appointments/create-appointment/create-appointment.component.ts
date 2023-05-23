@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, LOCALE_ID, Inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Affiliate } from 'src/app/models/affiliate';
@@ -9,6 +9,9 @@ import { IdTest } from 'src/app/models/idTest';
 import { Test } from 'src/app/models/test';
 import { AppointmentsService } from 'src/app/services/appointments.service';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
+import {MatSelectModule} from '@angular/material/select';
+import { TestsService } from 'src/app/services/tests.service';
+import { AffiliatesService } from 'src/app/services/affiliates.service';
 
 
 
@@ -26,13 +29,17 @@ export class CreateAppointmentComponent {
   private objetoTest: IdTest= new IdTest();
   private objetoAffiliate: Affiliate = new Affiliate();
 
+  public appointments: Appointment[];
+  public tests: Test[];
+  public affiliates: Affiliate[];
+
   public appointmentForm:FormGroup = this.fb.group({
 
     id: [],
-    date:[''],
-    hora: [''],
-    idTest:[],
-    idAffiliate:[],
+    date:['', Validators.required],
+    hora: ['', Validators.required],
+    idTest:['', Validators.required],
+    idAffiliate:['', Validators.required],
 
   });
 
@@ -43,19 +50,46 @@ export class CreateAppointmentComponent {
     private appointmentServicePost: AppointmentsService,
     @Inject(LOCALE_ID) private locale: string,
     private fb: FormBuilder,
+    private testsService: TestsService,
+    private affiliatesService: AffiliatesService
 
     ){}
 
 
     ngOnInit(){
+      this.getListTest1();
+      this.getListAffiliates();
 
 
+    }
+
+    getListTest1(){
+
+      this.testsService.getListTest().subscribe(response =>{
+        this.tests= response;
+        console.log(this.tests)
+
+      })
+    }
+
+    getListAffiliates(){
+      this.affiliatesService.getListAffiliates().subscribe(response =>
+        {this.affiliates=response
+        console.log(response);
+        }
+      )
     }
 
 
     onSubmit():void{
     this.createAppointment();
 
+  }
+
+  get currentAppointment(): Appointment {
+
+    const appointment = this.appointmentForm.value
+    return appointment;
   }
 
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Test } from 'src/app/models/test';
@@ -17,8 +17,8 @@ export class CreateTestComponent {
   public testForm = new FormGroup({
 
     idTest: new FormControl <number>(100),
-    name: new FormControl('',{nonNullable:true}),
-    description: new FormControl('',{nonNullable:true}),
+    name: new FormControl('',[Validators.required]),
+    description: new FormControl('',[Validators.required]),
   });
 
     constructor(private testServicePost: TestsService, private router:Router,

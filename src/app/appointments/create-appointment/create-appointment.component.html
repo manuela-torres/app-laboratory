@@ -30,25 +30,37 @@
 
     <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
 
-      <mat-form-field class="example-full-width">
-        <mat-label>ID prueba</mat-label>
-        <input matInput placeholder="" value="" formControlName="idTest">
+
+
+      <mat-form-field>
+        <mat-label>Test</mat-label>
+        <mat-select formControlName="idTest">
+          <mat-option *ngFor="let test of tests" [value]="test.idTest" >
+            {{test.name}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
 
     <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
 
 
-      <mat-form-field class="example-full-width">
-        <mat-label>ID afiliado</mat-label>
-        <input matInput placeholder="" value="" formControlName="idAffiliate">
+
+      <mat-form-field>
+        <mat-label>Afiliado</mat-label>
+        <mat-select formControlName="idAffiliate">
+          <mat-option *ngFor="let affiliate of affiliates" [value]="affiliate.idAffiliate">
+            {{affiliate.name}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <span class="example-fill-remaining-space" style="margin-left:4rem"></span>
 
       <span>
-        <button mat-raised-button color="primary" style="margin-left: 55rem;" type="submit" (click)="openDialog()">Guardar</button>
-        <button mat-raised-button color="warn" style="margin-left: 1rem;">Cancelar</button>
+        <button mat-raised-button color="primary" style="margin-left: 55rem;" [disabled]="appointmentForm.invalid"
+         type="submit" (click)="openDialog()">Guardar</button>
+        <button mat-raised-button color="warn" style="margin-left: 1rem;" routerLink="/appointments">Cancelar</button>
       </span>
     </form>
 
@@ -58,7 +70,9 @@
 
 </div>
 
-
+<pre>
+  {{currentAppointment|json}}
+</pre>
 
 
 

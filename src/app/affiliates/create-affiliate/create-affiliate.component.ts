@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Affiliate } from 'src/app/models/affiliate';
 import { AffiliatesService } from 'src/app/services/affiliates.service';
 import { AffiliateListComponent } from '../affiliate-list/affiliate-list.component';
-import { FormBuilder, FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,10 +18,9 @@ export class CreateAffiliateComponent {
 public affiliateForm:FormGroup = this.fb.group({
 
   idAffiliate: [],
-  name:[''],
-  hora: [''],
-  age:[],
-  mail:[],
+  name:['', Validators.required],
+  age:['',  [Validators.required,Validators.min(0), Validators.max(130)]],
+  mail:['', [Validators.required, Validators.email]],
 
 });
 
@@ -39,6 +38,7 @@ public affiliateForm:FormGroup = this.fb.group({
 
     if(this.affiliateForm.invalid) return;
     this.createAffiliate();
+    this.openDialog();
   }
 
   openDialog():void{

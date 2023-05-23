@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs';
@@ -16,9 +16,9 @@ export class EditAffiliateComponent {
   public editAffiliateForm:FormGroup = this.fb.group({
 
     idAffiliate: [],
-    name:[''],
-    age:[],
-    mail:[],
+    name:['', Validators.required],
+    age:['',  [Validators.required,Validators.min(0), Validators.max(130)]],
+    mail:['', [Validators.required, Validators.email]],
 
   });
 
