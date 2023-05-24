@@ -24,6 +24,13 @@ export class AppointmentsService {
     // )
   }
 
+  getAppointmentByDate(date:string): Observable<any[]>{
+    return this.httpClient.get<any[]>(`${this.baseUrl}/appointments/listadoporfecha/${date}`)
+    // .pipe(
+    //   catchError (error => of (undefined)) //fernando 195
+    // )
+  }
+
   createAppointment(appointment:Appointment): Observable<Appointment>{
     return this.httpClient.post<Appointment>(`${this.baseUrl}/appointments`,appointment);
 

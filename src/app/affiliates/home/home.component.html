@@ -7,30 +7,31 @@
 
     <div>
 
+      <form style="display:inline" [formGroup]="appointmentDateForm" (ngSubmit)="onSearchAppointmentByDate()">
+
       <mat-form-field appearance="fill">
         <mat-label>Seleccione una fecha</mat-label>
-        <input matInput [matDatepicker]="picker">
+        <input matInput [matDatepicker]="picker" formControlName="date">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-    <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
+      <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
 
-    <span>
+      <span>
 
-      <a mat-mini-fab color="primary">
-          <mat-icon>search</mat-icon></a>
+      <button mat-mini-fab color="primary" type="submit">
+          <mat-icon>search</mat-icon></button>
       </span>
+
+      </form>
 
       <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
 
 
       <form class="example-form" style="display:inline" [formGroup]="affiliateIdForm" (ngSubmit)="onSearchAffiliateById()">
-       <!--  <mat-form-field class="example-full-width">
-          <mat-label>ID afiliado</mat-label>
-          <input matInput placeholder="" value="">
-        </mat-form-field> -->
+
 
         <mat-form-field>
           <mat-label>ID Afiliado</mat-label>

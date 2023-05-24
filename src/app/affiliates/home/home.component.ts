@@ -55,6 +55,12 @@ export class HomeComponent implements OnInit { //implements OnInit
 
   });
 
+  public appointmentDateForm:FormGroup = this.fb.group({
+
+    date: [''],
+
+  });
+
   constructor(private affiliatesService1: AffiliatesService,
               private appointmentsService1: AppointmentsService,
               private fb: FormBuilder,
@@ -137,6 +143,25 @@ export class HomeComponent implements OnInit { //implements OnInit
     this.affiliatesHome=this.affiliateCopy.filter(response=>
       response.idAffiliate===Number(this.affiliateIdForm.value.idAffiliate1)
      )
+
+
+  }
+
+  onSearchAppointmentByDate():void{
+
+    let date1= new Date (this.appointmentDateForm.value.date)
+    let date2= date1.toISOString()
+    let finalDate= date2.slice(0,10)
+    console.log(finalDate);
+
+
+    this.appointmentsService1.getAppointmentByDate(finalDate).subscribe(response=>
+        {this.appointments=response;
+          console.log(response);
+
+        }
+        )
+
 
 
   }
