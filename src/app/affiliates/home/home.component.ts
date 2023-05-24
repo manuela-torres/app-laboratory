@@ -76,25 +76,26 @@ export class HomeComponent implements OnInit { //implements OnInit
 
   getListAffiliates(){
     this.affiliatesService1.getListAffiliates().subscribe(response =>
-      {this.affiliatesHome=response
-      this.affiliateCopy= this.affiliatesHome.slice(0)
+      {//this.affiliatesHome=response
+        this.affiliateCopy=response
+      //this.affiliateCopy= this.affiliatesHome.slice(0)
       //console.log(this.affiliateCopy);
       },
      )
    }
 
-   getListAppointments(){
+  //  getListAppointments(){
 
-    this.appointmentsService1.getListAppointments().subscribe(response=>
-      {this.appointments=response;
-        console.log(response);
-        this.appointmentsCopy= this.appointments.slice(0)
-        console.log(this.appointmentsCopy, 'chao');
+  //   this.appointmentsService1.getListAppointments().subscribe(response=>
+  //     {this.appointments=response;
+  //       console.log(response);
+  //       this.appointmentsCopy= this.appointments.slice(0)
+  //       console.log(this.appointmentsCopy, 'chao');
 
-      }
-      )
+  //     }
+  //     )
 
-   }
+  //  }
 
   getAppointmentsByAffiliateId(idAffiliate: number){
     this.appointmentsService1.getAppointmentByIdAffiliate(idAffiliate).subscribe(response=>
@@ -111,8 +112,29 @@ export class HomeComponent implements OnInit { //implements OnInit
     //   row.expanded = false;
     // })
 
-    element.expanded = !element.expanded,
-    this.getAppointmentsByAffiliateId( idAffiliate)
+    element.expanded = !element.expanded
+
+
+
+
+    console.log(this.appointments, 'antes filtro')
+
+
+    if(this.appointmentsCopy) {
+      console.log(this.appointments)
+      console.log(this.appointmentsCopy, 'copy');
+
+      this.appointments=this.appointmentsCopy.filter(a=>
+
+       a.idAffiliate.idAffiliate===idAffiliate
+
+
+        )
+
+
+    } else{
+      this.getAppointmentsByAffiliateId(idAffiliate)
+    }
 
   }
 
@@ -125,6 +147,7 @@ export class HomeComponent implements OnInit { //implements OnInit
      )
 
 
+
   }
 
   onSearchAppointmentByDate():void{
@@ -133,24 +156,33 @@ export class HomeComponent implements OnInit { //implements OnInit
 
     let date1= new Date (this.appointmentDateForm.value.date)
     let date2= date1.toISOString()
-    //let date3= date1.toLocaleDateString('es-CO',{day:'2-digit', month:'2-digit', year:'numeric'})
+    let date3= date1.toLocaleDateString('es-CO',{day:'2-digit', month:'2-digit', year:'numeric'})
     let finalDate= date2.slice(0,10)
     console.log(finalDate);
 
     this.appointmentsService1.getAppointmentByDate(finalDate).subscribe(response=>
       {this.appointments=response;
-        console.log(response)
+        // console.log(response,'uno')
         this.appointmentsCopy= this.appointments.slice(0)
-        console.log(this.appointmentsCopy, 'chao');
+        //console.log(this.appointmentsCopy, 'dos');
+        //this.appointments=this.appointmentsCopy.filter(response=>
+          //response.date===String(date3))
+
+      //console.log(this.appointmentsCopy, 'cuatro');
+
+      this.affiliatesHome=this.affiliateCopy.filter(b=>
+        response.map(c=> c.idAffiliate.idAffiliate).includes(b.idAffiliate)
+        )
+
+      // this.appointments=this.appointmentsCopy.filter(a=>
+      // a.date===String(date3))
+
+      //console.log(this.appointments,'tres');
+
       })
 
 
-    console.log(this.appointments);
-
-    console.log(this.appointmentsCopy, 'vamos');
-
-    this.appointments=this.appointmentsCopy.filter(response=>
-      response.date===String(finalDate))
+    // console.log(this.appointments,'tres');
 
 
 
