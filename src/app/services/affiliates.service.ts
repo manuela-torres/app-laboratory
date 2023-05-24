@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
 import { Affiliate } from '../models/affiliate';
 
@@ -38,10 +38,10 @@ export class AffiliatesService {
   }
 
   deleteAffiliateById(id:number): Observable<boolean>{
-    return this.httpClient.delete(`${this.baseUrl}/affiliates/${id}`)
+    return this.httpClient.delete(`${this.baseUrl}/affiliates/${id}`, {observe: 'response'})
     .pipe(
-      catchError (err => of (false)),
-      map (resp=> true)
+      //catchError (err => of (false)),
+      map (resp=> resp.status===HttpStatusCode.Ok)
     );
 
   }

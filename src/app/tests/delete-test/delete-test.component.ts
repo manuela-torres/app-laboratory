@@ -5,6 +5,8 @@ import { switchMap } from 'rxjs';
 import { Test } from 'src/app/models/test';
 import { TestsService } from 'src/app/services/tests.service';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
+import { FailDialogComponent } from 'src/app/shared/fail-dialog/fail-dialog.component';
+
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
 
 @Component({
@@ -34,6 +36,8 @@ export class DeleteTestComponent {
       )
       .subscribe(test =>{
 
+        if(!test) return this.router.navigate(['/test'])
+
         let arrayTest = Object.values(test)
         this.testId=(arrayTest[0])
         this.testName= (arrayTest[1])
@@ -42,6 +46,7 @@ export class DeleteTestComponent {
       })
 
     }
+
 
 
 
@@ -55,12 +60,18 @@ export class DeleteTestComponent {
         if(!result) return;
 
         this.testsService.deleteTestById(this.testId).subscribe(wasDeleted =>{
-          if (wasDeleted)
-          this.router.navigate(['/test'])
+          if (wasDeleted){
+            const dialogRef1 = this.dialog.open(SuccessDialogComponent, {
 
-          const dialogRef1 = this.dialog.open(SuccessDialogComponent, {
+            });
+            this.router.navigate(['/test'])
+          }else{
+              //mensaje de error
+            const dialogRef2 = this.dialog.open(FailDialogComponent, {
 
-          });
+              });
+              this.router.navigate(['/test'])
+          }
 
           return
         });

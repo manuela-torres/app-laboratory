@@ -13,7 +13,6 @@ export class SuccessDialogComponent {
 
   constructor(public dialogRef:MatDialogRef<SuccessDialogComponent>,
     @Inject (MAT_DIALOG_DATA) public message: string,
-    private router:Router,
     public dialog: MatDialog){}
 
     ngOnInit(){}
@@ -21,7 +20,7 @@ export class SuccessDialogComponent {
     OnClickList(){
 
       this.dialogRef.close();
-      //input
+
 
     }
 

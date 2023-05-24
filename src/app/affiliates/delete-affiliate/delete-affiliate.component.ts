@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 import { AffiliatesService } from 'src/app/services/affiliates.service';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
+import { FailDialogComponent } from 'src/app/shared/fail-dialog/fail-dialog.component';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
 
 @Component({
@@ -59,14 +60,20 @@ export class DeleteAffiliateComponent {
         if(!result) return;
 
         this.affiliateService.deleteAffiliateById(this.affiliateId).subscribe(wasDeleted =>{
-          if (wasDeleted)
-          this.router.navigate(['/affiliates'])
-
+          if (wasDeleted){
           const dialogRef1 = this.dialog.open(SuccessDialogComponent, {
 
           });
+          this.router.navigate(['/affiliates'])
 
-          return
+        }else{
+          const dialogRef2 = this.dialog.open(FailDialogComponent, {
+
+          });
+          this.router.navigate(['/affiliates'])
+
+        }
+        return
         });
 
       });

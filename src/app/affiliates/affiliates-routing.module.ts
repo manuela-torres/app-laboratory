@@ -7,12 +7,12 @@ import { EditAffiliateComponent } from './edit-affiliate/edit-affiliate.componen
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-    {path:'', component:HomeComponent},
+    //{path:'', component:HomeComponent},
     //{path:'affiliates-list', component: AffiliateListComponent},
     {path:'create-affiliate', component: CreateAffiliateComponent},
     {path:'delete-affiliate/:id', component: DeleteAffiliateComponent},
     {path:'editaffiliate/:id', component: EditAffiliateComponent},
-    {path:'home', component: HomeComponent},
+    //{path:'home', component: HomeComponent},
 
 ];
 
