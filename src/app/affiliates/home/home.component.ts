@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import {FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
@@ -9,6 +9,7 @@ import { AffiliatesService } from 'src/app/services/affiliates.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import {switchMap} from 'rxjs';
 import { IdAffiliate } from 'src/app/models/idAffiliates';
+import { DOCUMENT, Location } from '@angular/common'
 
 
 
@@ -60,7 +61,10 @@ export class HomeComponent implements OnInit { //implements OnInit
 
   constructor(private affiliatesService1: AffiliatesService,
               private appointmentsService1: AppointmentsService,
+
               private fb: FormBuilder,
+              public _router: Router, public _location: Location,
+              @Inject(DOCUMENT) private _document: Document
     )
 
   { }
@@ -186,6 +190,17 @@ export class HomeComponent implements OnInit { //implements OnInit
 
 
 
+  }
+
+	refresh(): void {
+		this._router.navigateByUrl("/home", { skipLocationChange: false }).then(() => {
+		console.log(decodeURI(this._location.path()));
+		this._router.navigate([decodeURI(this._location.path())]);
+		});
+	}
+
+  refreshPage() {
+    this._document.defaultView?.location.reload();
   }
 
 
