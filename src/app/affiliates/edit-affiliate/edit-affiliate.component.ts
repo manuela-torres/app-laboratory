@@ -37,11 +37,9 @@ export class EditAffiliateComponent {
        )
       .subscribe(affiliate =>{
 
-      console.log ({affiliate})
 
       let arrayAffiliate = Object.values(affiliate)
 
-      console.log(arrayAffiliate, 'Hi')
       this.editAffiliateForm.get('idAffiliate')?.setValue(arrayAffiliate[0])
       this.editAffiliateForm.get('name')?.setValue(arrayAffiliate[1])
       this.editAffiliateForm.get('age')?.setValue(arrayAffiliate[2])
@@ -55,7 +53,7 @@ export class EditAffiliateComponent {
 
     updateTest (){
       this.affiliatesService.updateAffiliate(this.editAffiliateForm.value).subscribe(dato =>{
-        console.log(dato);})
+        return;})
     }
 
     onSubmit():void{
@@ -70,7 +68,7 @@ export class EditAffiliateComponent {
 
       });
       dialogRef.afterClosed().subscribe(respuesta=>{
-        console.log(respuesta)
+
         this.router.navigate(['/affiliates'])
       })
     }

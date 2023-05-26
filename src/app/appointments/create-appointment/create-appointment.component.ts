@@ -1,4 +1,4 @@
-import { formatDate } from '@angular/common';
+
 import { Component, LOCALE_ID, Inject } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,7 +9,7 @@ import { IdTest } from 'src/app/models/idTest';
 import { Test } from 'src/app/models/test';
 import { AppointmentsService } from 'src/app/services/appointments.service';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
-import {MatSelectModule} from '@angular/material/select';
+
 import { TestsService } from 'src/app/services/tests.service';
 import { AffiliatesService } from 'src/app/services/affiliates.service';
 
@@ -67,7 +67,7 @@ export class CreateAppointmentComponent {
 
       this.testsService.getListTest().subscribe(response =>{
         this.tests= response;
-        console.log(this.tests)
+
 
       })
     }
@@ -75,7 +75,7 @@ export class CreateAppointmentComponent {
     getListAffiliates(){
       this.affiliatesService.getListAffiliates().subscribe(response =>
         {this.affiliates=response
-        console.log(response);
+       ;
         }
       )
     }
@@ -111,7 +111,7 @@ export class CreateAppointmentComponent {
 
 
     this.appointmentServicePost.createAppointment(this.objetoAppointment).subscribe(dato =>{
-      console.log(dato);})
+     })
   }
 
   openDialog():void{
@@ -120,7 +120,7 @@ export class CreateAppointmentComponent {
 
     });
     dialogRef.afterClosed().subscribe(respuesta=>{
-      console.log(respuesta)
+
       this.router.navigate(['/appointments'])
     })
   }

@@ -12,18 +12,14 @@ export class TestsService {
 
   constructor(private httpClient: HttpClient) { }
 
-  /*Función que consume el servicio get de test*/
 
   getListTest(): Observable<Test[]>{
-    return this.httpClient.get<Test[]>(`${this.baseUrl}/test`);//(this.baseUrl)+"test";
+    return this.httpClient.get<Test[]>(`${this.baseUrl}/test`);
 
   }
 
   getTestById(id:number): Observable<any[]>{
     return this.httpClient.get<any[]>(`${this.baseUrl}/test/${id}`)
-    // .pipe(
-    //   catchError (error => of (undefined)) //fernando 195
-    // )
 
   }
 
@@ -41,7 +37,7 @@ export class TestsService {
   deleteTestById(id:number): Observable<boolean>{
     return this.httpClient.delete(`${this.baseUrl}/test/${id}`, {observe: 'response'})
     .pipe(
-      //catchError (err => false),
+
       map (resp=> resp.status===HttpStatusCode.Ok )
     );
 

@@ -27,7 +27,7 @@ export class AppointmentsListComponent {
   getListAppointments1(){
     this.appointmentsService.getListAppointments().subscribe(response =>
       {this.appointments=response
-      console.log(response);
+      ;
 
 
       }

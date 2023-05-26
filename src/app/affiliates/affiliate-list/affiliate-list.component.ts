@@ -25,7 +25,7 @@ export class AffiliateListComponent {
   getListAffiliates(){
     this.affiliatesService.getListAffiliates().subscribe(response =>
       {this.affiliates=response
-      console.log(response);
+      ;
       }
     )
   }

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
-import { Test } from 'src/app/models/test';
 import { TestsService } from 'src/app/services/tests.service';
 import { ConfirmDialogComponent } from 'src/app/shared/confirm-dialog/confirm-dialog.component';
 import { FailDialogComponent } from 'src/app/shared/fail-dialog/fail-dialog.component';

@@ -60,12 +60,11 @@ export class EditAppointmentComponent {
         let arrayAppointment = Object.values(test)
         console.log(arrayAppointment)
         this.appointmentEditForm.get('id')?.setValue(arrayAppointment[0])
-        //this.appointmentEditForm.get('date')?.setValue(arrayAppointment[1])
-        //this.appointmentEditForm.get('hora')?.setValue(arrayAppointment[2])
+
         this.appointmentEditForm.get('idTest')?.setValue(arrayAppointment[3].idTest)
         this.appointmentEditForm.get('idAffiliate')?.setValue(arrayAppointment[4].idAffiliate)
 
-        console.log(this.appointmentEditForm.value)
+
 
         return;
       })
@@ -80,7 +79,7 @@ export class EditAppointmentComponent {
 
       this.testsService.getListTest().subscribe(response =>{
         this.tests= response;
-        console.log(this.tests)
+
 
       })
     }
@@ -88,7 +87,7 @@ export class EditAppointmentComponent {
     getListAffiliates(){
       this.affiliatesService.getListAffiliates().subscribe(response =>
         {this.affiliates=response
-        console.log(response);
+
         }
       )
     }
@@ -110,7 +109,7 @@ export class EditAppointmentComponent {
     this.objetoAppointment.idTest = this.objetoTest,
 
       this.appointmentService.updateAppointment(this.objetoAppointment).subscribe(dato =>{
-        console.log(dato);})
+        ;})
     }
 
     onSubmit():void{
@@ -125,7 +124,7 @@ export class EditAppointmentComponent {
 
       });
       dialogRef.afterClosed().subscribe(respuesta=>{
-        console.log(respuesta)
+
         this.router.navigate(['/appointments'])
       })
     }

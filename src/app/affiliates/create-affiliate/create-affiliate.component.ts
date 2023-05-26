@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Affiliate } from 'src/app/models/affiliate';
+import { Component} from '@angular/core';
 import { AffiliatesService } from 'src/app/services/affiliates.service';
-import { AffiliateListComponent } from '../affiliate-list/affiliate-list.component';
-import { FormBuilder, FormControl, FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -30,7 +28,7 @@ public affiliateForm:FormGroup = this.fb.group({
 
   createAffiliate (){
     this.affiliatesServicePost.createAffiliate(this.affiliateForm.value).subscribe(dato =>{
-      console.log(dato);})
+      ;})
   }
 
 
@@ -47,7 +45,7 @@ public affiliateForm:FormGroup = this.fb.group({
 
     });
     dialogRef.afterClosed().subscribe(respuesta=>{
-      console.log(respuesta)
+
       this.router.navigate(['/affiliates'])
     })
   }

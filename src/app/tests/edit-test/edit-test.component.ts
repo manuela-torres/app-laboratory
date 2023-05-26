@@ -3,7 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
-import { Test } from 'src/app/models/test';
 import { TestsService } from 'src/app/services/tests.service';
 import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-dialog.component';
 
@@ -48,7 +47,7 @@ export class EditTestComponent {
 
   updateTest (){
       this.testServicePut.updateTest(this.editTestForm.value).subscribe(dato =>{
-        console.log(dato);})
+       ;})
     }
 
   onSubmit():void{
@@ -64,7 +63,7 @@ export class EditTestComponent {
 
     });
     dialogRef.afterClosed().subscribe(respuesta=>{
-      console.log(respuesta)
+
       this.router.navigate(['/test'])
     })
   }

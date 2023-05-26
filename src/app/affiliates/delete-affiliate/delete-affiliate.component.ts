@@ -44,8 +44,6 @@ export class DeleteAffiliateComponent {
         this.affiliateAge= (arrayAffiliate[2])
         this.affiliateMail= (arrayAffiliate[3])
 
-        console.log(arrayAffiliate)
-        console.log(this.affiliateAge)
         return;
       })
     }

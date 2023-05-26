@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
-import { Observable, catchError, map, of } from 'rxjs';
+import { HttpClient, HttpStatusCode } from '@angular/common/http';
+import { Observable, map, } from 'rxjs';
 import { Affiliate } from '../models/affiliate';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class AffiliatesService {
 
   private baseUrl="http://localhost:8080/api/controller";
 
-  //private headers:HttpHeaders= new HttpHeaders({'Content-Type':'application/json'});
+
 
   constructor(private httpClient: HttpClient) { }
 
@@ -22,9 +22,7 @@ export class AffiliatesService {
     return this.httpClient.get<any[]>(`${this.baseUrl}/affiliates/${id}`)
   }
 
-  // createAffiliate(affiliate:Affiliate): Observable<Affiliate>{
-  //   return this.httpClient.post<Affiliate>(`${this.baseUrl}/affiliates`, affiliate,{headers:this.headers});
-  // }
+
 
   createAffiliate(affiliate:Affiliate): Observable<Affiliate>{
     return this.httpClient.post<Affiliate>(`${this.baseUrl}/affiliates`,affiliate);
@@ -40,7 +38,7 @@ export class AffiliatesService {
   deleteAffiliateById(id:number): Observable<boolean>{
     return this.httpClient.delete(`${this.baseUrl}/affiliates/${id}`, {observe: 'response'})
     .pipe(
-      //catchError (err => of (false)),
+
       map (resp=> resp.status===HttpStatusCode.Ok)
     );
 

@@ -14,11 +14,7 @@ import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-di
 
 export class DelateAppointmentComponent {
 
-  // id:number;
-  // date:string;
-  // hora: string;
-  // idTest:IdTest;
-  // idAffiliate:IdAffiliate;
+
 
   public appointmentId: number;
   public appointmentDate:string;
@@ -48,9 +44,6 @@ export class DelateAppointmentComponent {
        this.appointmentIdTest= (arrayAppointment[3].idTest)
        this.appointmentIdAffiliate= (arrayAppointment[4].idAffiliate)
 
-       console.log(arrayAppointment)
-       console.log(this.appointmentDate)
-       console.log(this.appointmentIdAffiliate)
        return;
      })
    }

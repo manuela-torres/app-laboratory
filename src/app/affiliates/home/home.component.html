@@ -34,10 +34,10 @@
 
 
         <mat-form-field>
-          <mat-label>ID Afiliado</mat-label>
+          <mat-label>Seleccione afiliado</mat-label>
           <mat-select formControlName="idAffiliate1">
             <mat-option *ngFor="let affiliate of affiliateCopy" [value]="affiliate.idAffiliate">
-              {{affiliate.idAffiliate}}
+              {{affiliate.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -65,7 +65,7 @@
 
 
   </div>
-
+  <span class="example-fill-remaining-space" style="margin-left:1rem"></span>
 <div class="wrapper">
 
   <table mat-table [dataSource]="affiliatesHome" multiTemplateDataRows class="mat-elevation-z8">
@@ -79,7 +79,7 @@
     </ng-container>
 
     <ng-container matColumnDef="idAffiliate">
-      <th mat-header-cell *matHeaderCellDef> Id afiliado </th>
+      <th mat-header-cell *matHeaderCellDef> ID Afiliado </th>
       <td mat-cell *matCellDef="let element"> {{element.idAffiliate}} </td>
     </ng-container>
 
@@ -107,26 +107,21 @@
           <div class="example-container mat-elevation-z8" style="width: 800px">
             <mat-table #table [dataSource]="appointments" >
 
-
-              <!-- Position Column -->
               <ng-container matColumnDef="id">
-                <mat-header-cell *matHeaderCellDef> Id cita </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef> Id Cita </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
               </ng-container>
 
-              <!-- Name Column -->
               <ng-container matColumnDef="date">
                 <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
               </ng-container>
 
-              <!-- Weight Column -->
               <ng-container matColumnDef="hora">
                 <mat-header-cell *matHeaderCellDef> Hora </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.hora}} </mat-cell>
               </ng-container>
 
-              <!-- Symbol Column -->
               <ng-container matColumnDef="idTest">
                 <mat-header-cell *matHeaderCellDef> Nombre de prueba </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.idTest.name}} </mat-cell>

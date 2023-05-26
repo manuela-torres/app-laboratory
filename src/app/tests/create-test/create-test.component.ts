@@ -13,7 +13,6 @@ import { SuccessDialogComponent } from 'src/app/shared/success-dialog/success-di
 })
 export class CreateTestComponent {
 
-  //formulario reactivo
   public testForm = new FormGroup({
 
     idTest: new FormControl <number>(100),
@@ -32,7 +31,7 @@ export class CreateTestComponent {
 
     createTest (){
       this.testServicePost.createTest(this.currentTest).subscribe(dato =>{
-        console.log(dato);})
+       ;})
     }
 
   onSubmit():void{
@@ -46,7 +45,7 @@ export class CreateTestComponent {
 
     });
     dialogRef.afterClosed().subscribe(respuesta=>{
-      console.log(respuesta)
+
       this.router.navigate(['/test'])
     })
   }

@@ -8,7 +8,6 @@ import { Appointment } from '../models/appointment';
 })
 export class AppointmentsService {
 
-  //private baseUrl="/api/controller"
   private baseUrl="http://localhost:8080/api/controller"
 
   constructor(private httpClient: HttpClient) { }
@@ -19,16 +18,12 @@ export class AppointmentsService {
 
   getAppointmentByIdAffiliate(idAffiliate:number): Observable<any[]>{
     return this.httpClient.get<any[]>(`${this.baseUrl}/appointments/idAffiliate/${idAffiliate}`)
-    // .pipe(
-    //   catchError (error => of (undefined)) //fernando 195
-    // )
+
   }
 
   getAppointmentByDate(date:string): Observable<any[]>{
     return this.httpClient.get<any[]>(`${this.baseUrl}/appointments/listadoporfecha/${date}`)
-    // .pipe(
-    //   catchError (error => of (undefined)) //fernando 195
-    // )
+
   }
 
   createAppointment(appointment:Appointment): Observable<Appointment>{
