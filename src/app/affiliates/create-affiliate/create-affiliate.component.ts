@@ -22,6 +22,8 @@ public affiliateForm:FormGroup = this.fb.group({
 
 });
 
+
+
   constructor(private affiliatesServicePost: AffiliatesService, private router:Router,
     public dialog: MatDialog, private fb: FormBuilder){}
 
