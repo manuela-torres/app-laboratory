@@ -37,6 +37,7 @@ import { SuccessDialogComponent } from './shared/success-dialog/success-dialog.c
     MatButtonModule
 
   ],
+  exports:[HeaderComponent],
 
   providers: [],
   bootstrap: [AppComponent]
